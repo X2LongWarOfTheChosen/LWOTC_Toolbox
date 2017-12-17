@@ -1,0 +1,8 @@
+
+/* LW Toolbox debug messages. Can be independently enabled/disabled via the Suppress directive in XComEngine.ini */
+`define TBDebug(msg,cond,tag) if(class'XComGameState_LWToolboxOptions'.default.Suppress.Find('TBDebug') == -1) `Log(`msg, `cond, 'LW_Toolbox_Debug')
+
+/* LW Toolbox trace messages, e.g. super log spam with lots of detail. Can be independently enabled/disabled via the Suppress directive
+   in XComEngine.ini */
+`define TBTrace(msg,cond,tag) if(class'XComGameState_LWToolboxOptions'.default.Suppress.Find('TBTrace') == -1) `Log(`msg, `cond, 'LW_Toolbox_Trace')
+
