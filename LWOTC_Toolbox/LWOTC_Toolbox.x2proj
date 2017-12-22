@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Default" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Guid>9257740c-1ca4-4981-b3d1-9b8b494ba709</Guid>
+    <Name>LWOTC_Toolbox</Name>
+    <Description>Description of My XCOM 2 Mod.</Description>
+    <SteamPublishID>0</SteamPublishID>
+    <AssemblyName>LWOTC_Toolbox</AssemblyName>
+    <RootNamespace>LWOTC_Toolbox</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Config\XComEditor.ini" />
+    <Content Include="Config\XComEngine.ini" />
+    <Content Include="Config\XComGame.ini" />
+    <Content Include="Localization\LW_Toolbox.int">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Localization\XComGame.int" />
+    <Content Include="ModPreview.jpg" />
+    <Content Include="ReadMe.txt" />
+    <Content Include="Src\LW_Toolbox\Classes\LWSpawnUnitFromAvenger.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UIAfterAction_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UIOptionsPCScreen_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UIPersonnel_SoldierListItem_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UIPersonnel_SquadSelect_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UIRecruitmentListItem_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UIScreenListener_Armory_MainMenu.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UIScreenListener_GameLoad.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UIScreenListener_ScreenUpdates.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UISquadSelect_ListItem_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UISquadSelect_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\UISquadSelect_UtilityItem_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\X2Ability_RedFog_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\X2DownloadableContentInfo_LWToolbox.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\X2Effect_RedFog_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\X2StrategyElement_RandomizedSoldierRewards.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\X2StrategyGameRulesetDataStructures_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\XComGameState_Effect_RedFog_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\XComGameState_LWToolboxOptions.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\XComGameState_Unit_LWRandomizedStats.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Toolbox\Classes\XComTacticalInput_LW.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_Tuple\Classes\LWTuple.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_XCGS_ModOptions\Classes\XComGameState_LWModOptions.uc">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Src\LW_XCGS_ToolboxOptions\Classes\XComGameState_LWToolboxPrototype.uc">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="Content\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Localization\Translations" />
+    <Folder Include="Src\" />
+    <Folder Include="Src\LW_Toolbox\" />
+    <Folder Include="Src\LW_Toolbox\Classes\" />
+    <Folder Include="Src\LW_Tuple\" />
+    <Folder Include="Src\LW_Tuple\Classes\" />
+    <Folder Include="Src\LW_XCGS_ModOptions\" />
+    <Folder Include="Src\LW_XCGS_ModOptions\Classes\" />
+    <Folder Include="Src\LW_XCGS_ToolboxOptions\" />
+    <Folder Include="Src\LW_XCGS_ToolboxOptions\Classes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildLocalExtensionPath)\XCOM2.targets" />
+</Project>
