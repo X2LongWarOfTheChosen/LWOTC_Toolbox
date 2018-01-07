@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------
 class UIPersonnel_SquadSelect_LW extends UIPersonnel_SquadSelect;
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 simulated function InitScreen(XComPlayerController InitController, UIMovie InitMovie, optional name InitName)
 {

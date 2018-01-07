@@ -6,7 +6,7 @@
 
 class UIAfterAction_LW extends UIAfterAction config(LW_Toolbox);
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 var bool m_bBackRowActive;
 var UIList m_kSlotList2;

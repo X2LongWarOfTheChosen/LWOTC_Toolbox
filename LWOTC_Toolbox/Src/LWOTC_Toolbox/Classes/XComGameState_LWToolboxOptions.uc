@@ -8,7 +8,7 @@ class XComGameState_LWToolboxOptions extends XComGameState_LWToolboxPrototype
 	config(LW_Toolbox)
 	dependson(X2DownloadableContentInfo_LWToolbox);
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 struct MissionOverride
 {

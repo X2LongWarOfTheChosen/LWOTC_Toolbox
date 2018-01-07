@@ -10,7 +10,7 @@ class UIScreenListener_ScreenUpdates extends UIScreenListener dependson(X2Downlo
 
 var bool bCapturedDefaultBaseDamage;
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 // This event is triggered after a screen is initialized
 event OnInit(UIScreen Screen)

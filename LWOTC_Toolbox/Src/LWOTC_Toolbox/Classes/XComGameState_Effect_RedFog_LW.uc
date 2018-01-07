@@ -8,7 +8,7 @@ class XComGameState_Effect_RedFog_LW extends XComGameState_BaseObject
 	config(LW_Toolbox)
 	dependson(X2Effect_RedFog_LW);
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 var bool bIsActive;
 

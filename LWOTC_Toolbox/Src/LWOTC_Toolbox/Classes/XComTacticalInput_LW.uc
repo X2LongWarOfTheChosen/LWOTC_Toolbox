@@ -3,7 +3,7 @@
 //-----------------------------------------------------------
 class XComTacticalInput_LW extends XComTacticalInput dependson(X2GameRuleset) config(LW_Toolbox);
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 state InReplayPlayback
 {

@@ -6,7 +6,7 @@
 
 class LWSpawnUnitFromAvenger extends Object;
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 var XComGameState_Unit SpawnedUnit;
 

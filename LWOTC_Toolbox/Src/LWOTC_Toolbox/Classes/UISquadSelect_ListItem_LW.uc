@@ -6,7 +6,7 @@
 
 class UISquadSelect_ListItem_LW extends UISquadSelect_ListItem;
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 var UIText SelectUnitText;
 var UIText CurrentHealthText;

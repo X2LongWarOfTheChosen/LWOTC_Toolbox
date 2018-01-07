@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------
 class UIRecruitmentListItem_LW extends UIRecruitmentListItem;
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 //var localized string RecruitConfirmLabel; 
 

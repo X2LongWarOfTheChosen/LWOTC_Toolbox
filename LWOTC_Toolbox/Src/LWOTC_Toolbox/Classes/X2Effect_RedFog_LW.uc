@@ -6,7 +6,7 @@
 class X2Effect_RedFog_LW extends X2Effect_ModifyStats
 	config(LW_Toolbox);
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 struct RedFogPenalty
 {

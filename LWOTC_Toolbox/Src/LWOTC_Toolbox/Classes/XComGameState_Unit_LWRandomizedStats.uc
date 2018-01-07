@@ -8,7 +8,7 @@ class XComGameState_Unit_LWRandomizedStats extends XComGameState_BaseObject
 	dependson(X2TacticalGameRulesetDataStructures)
 	config(LW_Toolbox);
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 struct StatSwap
 {

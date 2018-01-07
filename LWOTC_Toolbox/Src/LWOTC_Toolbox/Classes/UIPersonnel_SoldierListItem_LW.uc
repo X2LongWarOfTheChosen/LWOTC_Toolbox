@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------
 class UIPersonnel_SoldierListItem_LW extends UIPersonnel_SoldierListItem;
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 var float IconXPos, IconYPos, IconXDelta, IconScale, IconToValueOffsetX, IconToValueOffsetY;
 var float DisabledAlpha;

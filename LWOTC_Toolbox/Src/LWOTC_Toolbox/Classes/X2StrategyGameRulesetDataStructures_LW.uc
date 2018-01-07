@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------
 class X2StrategyGameRulesetDataStructures_LW extends X2StrategyGameRulesetDataStructures;
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 static function int GetMaxSoldiersAllowedOnMission(optional MissionDefinition Mission)
 {

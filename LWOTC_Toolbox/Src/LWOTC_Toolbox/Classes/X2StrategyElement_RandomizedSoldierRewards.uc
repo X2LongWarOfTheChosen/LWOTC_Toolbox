@@ -6,7 +6,7 @@
 class X2StrategyElement_RandomizedSoldierRewards extends X2StrategyElement
 	dependson(X2RewardTemplate);
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 static function GenerateCouncilSoldierReward(XComGameState_Reward RewardState, XComGameState NewGameState, optional float RewardScalar = 1.0, optional StateObjectReference RegionRef)
 {

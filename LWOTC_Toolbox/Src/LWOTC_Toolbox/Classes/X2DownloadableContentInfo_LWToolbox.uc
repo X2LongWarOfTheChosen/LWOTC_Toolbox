@@ -6,7 +6,7 @@
 
 class X2DownloadableContentInfo_LWToolbox extends X2DownloadableContentInfo;	
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 struct DefaultBaseDamageEntry
 {

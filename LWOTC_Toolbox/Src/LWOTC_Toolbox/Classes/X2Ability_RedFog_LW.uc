@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------
 class X2Ability_RedFog_LW extends X2Ability config(LW_Toolbox);
 
-`include(LW_Toolbox\Src\LW_Toolbox.uci)
+`include(LWOTC_Toolbox\Src\LW_Toolbox.uci)
 
 var config string RedFogIconImagePath;
 
