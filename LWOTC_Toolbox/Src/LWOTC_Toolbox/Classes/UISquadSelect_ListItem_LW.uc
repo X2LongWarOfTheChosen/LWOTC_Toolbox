@@ -65,8 +65,6 @@ simulated function UpdateData(optional int Index = -1, optional bool bDisableEdi
 	if(bDisabled)
 		return;
 
-	UpdateSelectUnitTextY();
-
 	SlotIndex = Index != -1 ? Index : SlotIndex;
 
 	bDisabledEdit = bDisableEdit;
@@ -127,7 +125,7 @@ simulated function UpdateData(optional int Index = -1, optional bool bDisableEdi
 		{
 			if(i >= UtilitySlots.ItemCount)
 			{
-				UtilityItem = UISquadSelect_UtilityItem(UtilitySlots.CreateItem(class'UISquadSelect_UtilityItem_LW').InitPanel());
+				UtilityItem = UISquadSelect_UtilityItem(UtilitySlots.CreateItem(class'UISquadSelect_UtilityItem').InitPanel());
 				UtilityItem.SetSize(UtilityItemWidth, UtilityItemHeight);
 				UtilityItem.CannotEditSlots = CannotEditSlotsList;
 				UtilitySlots.OnItemSizeChanged(UtilityItem);
@@ -264,38 +262,6 @@ simulated function UpdateData(optional int Index = -1, optional bool bDisableEdi
 
 }
 
-simulated function bool IsInActiveRow()
-{
-	//one or the other is true, but not both
-	return (UISquadSelect_LW(Screen).m_bUpperRowActive ^^ UIList(GetParent(class'UIList')) == UISquadSelect_LW(Screen).m_kSlotList);
-}
-
-simulated function UpdateSelectUnitTextY()
-{
-	if(IsInActiveRow())
-	{
-		if(GetLanguage() == "ESN")
-		{
-			SelectUnitText.SetY(163);
-		}
-		else
-		{
-			SelectUnitText.SetY(178);
-		}
-	}
-	else
-	{
-		if(GetLanguage() == "ESN")
-		{
-			SelectUnitText.SetY(223);
-		}
-		else
-		{
-			SelectUnitText.SetY(238);
-		}
-	}
-}
-
 simulated function string GetSelectUnitText(bool Focussed)
 {
 	local string HtmlString;
@@ -329,7 +295,7 @@ simulated function OnClickedDismissButton()
 
 simulated function OnClickedEditUnitButton()
 {
-	local UISquadSelect_LW SquadScreen;
+	local UISquadSelect SquadScreen;
 	local XComGameState_HeadquartersXCom XComHQ;
 
 	XComHQ = class'UIUtilities_Strategy'.static.GetXComHQ();
@@ -340,14 +306,14 @@ simulated function OnClickedEditUnitButton()
 		return;
 	}
 
-	SquadScreen = UISquadSelect_LW(screen);
+	SquadScreen = UISquadSelect(screen);
 	SquadScreen.m_iSelectedSlot = SlotIndex;
 	
 	if( XComHQ.Squad[SquadScreen.m_iSelectedSlot].ObjectID > 0 )
 	{
 		SquadScreen.bDirty = true;
-		//SquadScreen.SnapCamera();
-		SquadScreen.SwitchCameraToEditSoldier(1.167);
+		SquadScreen.SnapCamera();
+		//SquadScreen.SwitchCameraToEditSoldier(1.167);
 		SetTimer(0.73, false, nameof(LaunchUIMainMenu));
 		//SetTimer(1.167, false, nameof(ActivateSoldierUI));
 		`HQPRES.UIArmory_MainMenu(XComHQ.Squad[SquadScreen.m_iSelectedSlot],, 'PreM_SwitchToSoldier', , 'PreM_CustomizeUI_Off', 'PreM_SwitchToLineup');
@@ -411,17 +377,9 @@ simulated function OnMouseEvent(int Cmd, array<string> Args)
 		case "primaryWeaponButtonMC":   OnClickedPrimaryWeapon(); break;
 		case "heavyWeaponButtonMC":     OnClickedHeavyWeapon(); break;
 		case "dismissButtonMC":         OnClickedDismissButton(); break;
-		case "selectUnitButtonMC": 
-			if(!IsInActiveRow())
-				UISquadSelect_LW(Screen).SwitchActiveRow(UIList(GetParent(class'UIList')));
-		     OnClickedSelectUnitButton(); 
-			 break;
+		case "selectUnitButtonMC": OnClickedSelectUnitButton(); break;
 		case "editButtonMC":            OnClickedEditUnitButton(); break;
-		default :
-			if(InStr(Caps(CallBackTarget), "UISQUADSELECT_LISTITEM_LW") != -1)
-			{
-				UISquadSelect_LW(Screen).SwitchActiveRow(UIList(GetParent(class'UIList')));
-			}
+		case "bondIconMC":              OnClickBondIcon(none); break;
 		}
 		break;
 	}

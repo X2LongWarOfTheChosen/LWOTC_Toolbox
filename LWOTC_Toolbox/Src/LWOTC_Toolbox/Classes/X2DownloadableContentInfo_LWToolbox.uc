@@ -147,7 +147,7 @@ static function FinalizeUnitAbilitiesForInit(XComGameState_Unit UnitState, out a
 	ToolboxOptions = class'XComGameState_LWToolboxOptions'.static.GetToolboxOptions();
 
 	//only apply RedFog to xcom units in this manner
-	if (!UnitState.IsASoldier())
+	if (!UnitState.IsSoldier())
 	{
 		return;
 	}

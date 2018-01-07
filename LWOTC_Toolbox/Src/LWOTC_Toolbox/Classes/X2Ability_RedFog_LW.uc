@@ -60,25 +60,19 @@ static function X2AbilityTemplate CreateRedFogAbility()
 	return Template;
 }
 
-static function RedFogVisualization (XComGameState VisualizeGameState, out VisualizationTrack BuildTrack, const name EffectApplyResult)
+static function RedFogVisualization (XComGameState VisualizeGameState, out VisualizationActionMetadata ActionMetadata, const name EffectApplyResult)
 {
     local XComGameState_Unit UnitState;
 
-	if(!BuildTrack.StateObject_NewState.IsA('XComGameState_Unit'))
+	if(!ActionMetadata.StateObject_NewState.IsA('XComGameState_Unit'))
     {
         return;
     }
-	UnitState = XComGameState_Unit(BuildTrack.StateObject_NewState);
+	UnitState = XComGameState_Unit(ActionMetadata.StateObject_NewState);
 	if(UnitState == none || UnitState.IsDead())
     {
         return;
     }
-    class'X2StatusEffects'.static.UpdateUnitFlag(BuildTrack, VisualizeGameState.GetContext());
+    class'X2StatusEffects'.static.UpdateUnitFlag(ActionMetadata, VisualizeGameState.GetContext());
 
-}
-
-
-
-DefaultProperties
-{
 }

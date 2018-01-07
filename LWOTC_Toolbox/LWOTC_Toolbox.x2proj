@@ -113,9 +113,6 @@
     <Content Include="Src\LWOTC_Toolbox\Classes\UIOptionsPCScreen_LW.uc">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="Src\LWOTC_Toolbox\Classes\UIPersonnel_SoldierListItem_LW.uc">
-      <SubType>Content</SubType>
-    </Content>
     <Content Include="Src\LWOTC_Toolbox\Classes\UIPersonnel_SquadSelect_LW.uc">
       <SubType>Content</SubType>
     </Content>
@@ -132,12 +129,6 @@
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_Toolbox\Classes\UISquadSelect_ListItem_LW.uc">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Src\LWOTC_Toolbox\Classes\UISquadSelect_LW.uc">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Src\LWOTC_Toolbox\Classes\UISquadSelect_UtilityItem_LW.uc">
       <SubType>Content</SubType>
     </Content>
     <Content Include="Src\LWOTC_Toolbox\Classes\X2Ability_RedFog_LW.uc">

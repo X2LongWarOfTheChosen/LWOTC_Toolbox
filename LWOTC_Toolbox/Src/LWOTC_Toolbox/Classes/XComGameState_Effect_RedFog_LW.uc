@@ -30,12 +30,12 @@ function XComGameState_Effect GetOwningEffect(optional XComGameState GameState)
 		return XComGameState_Effect(`XCOMHISTORY.GetGameStateForObjectID(OwningObjectId));
 }
 
-function OnEndTacticalPlay()
+function OnEndTacticalPlay(XComGameState NewGameState)
 {
 	local X2EventManager EventManager;
 	local Object ThisObj;
 
-	super.OnEndTacticalPlay();
+	super.OnEndTacticalPlay(NewGameState);
 
 	EventManager = `XEVENTMGR;
 	ThisObj = self;
@@ -62,7 +62,7 @@ function RegisterEvent(optional XComGameState_Unit TargetUnit)
 	`XEVENTMGR.RegisterForEvent(ListenerObj, 'UpdateRedFogActivation', UpdateActivation, ELD_OnStateSubmitted,,TargetUnit); 
 }
 
-function EventListenerReturn UpdateActivation(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn UpdateActivation(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComGameState_Unit UnitState, UpdatedUnitState;
 	local XComGameState_Effect_RedFog_LW UpdatedEffectState;

@@ -720,7 +720,7 @@ public function UpdateSquadSize_OnChanged(UIListItemSpinner SpinnerControl, int 
 }
 
 // loops over units in XComHQ.Squad and spawns in any that aren't in play yet -- post-AlienHunters, also re-registers the HP GameStateListener
-function EventListenerReturn OnTacticalBeginPlay(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn OnTacticalBeginPlay(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComGameState_HeadquartersXCom XComHQ;
 	local XComGameStateHistory History;
@@ -741,7 +741,7 @@ function EventListenerReturn OnTacticalBeginPlay(Object EventData, Object EventS
 			{
 				`TBDEBUG("SquadSize Listener: Unit has no visualizer, attempting to spawn unit",, 'LW_Toolbox');
 				class'LWSpawnUnitFromAvenger'.static.SpawnUnitFromAvenger(UnitState.GetReference());
-				UnitState.OnBeginTacticalPlay();
+				UnitState.OnBeginTacticalPlay(GameState);
 			}
 		}
 	}
@@ -787,7 +787,7 @@ public function UpdateRandomizedDamage_OnChanged(UIListItemSpinner SpinnerContro
 }
 
 //TODO: hook this up when new functionality is added -- OR via ScreenListener, if it isn't added in time
-function EventListenerReturn PostGameLoad(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn PostGameLoad(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	`TBTRACE("ToolboxOptions: PostGameLoad called",, 'LW_Toolbox');
 	UpdateWeaponTemplates_RandomizedDamage();
@@ -795,6 +795,7 @@ function EventListenerReturn PostGameLoad(Object EventData, Object EventSource, 
 	return ELR_NoInterrupt;
 }
 
+// TODO: Fixed for new difficulty settings, Does this work?
 function UpdateWeaponTemplates_RandomizedDamage()
 {
 	local X2ItemTemplateManager ItemTemplateManager;
@@ -833,7 +834,7 @@ function UpdateWeaponTemplates_RandomizedDamage()
 
 	for( DifficultyIndex = `MIN_DIFFICULTY_INDEX; DifficultyIndex <= `MAX_DIFFICULTY_INDEX; ++DifficultyIndex )
 	{
-		Settings.SetDifficulty(DifficultyIndex, true);
+		Settings.SetDifficulty(DifficultyIndex, -1, -1, -1, false, true);
 
 		WeaponTemplates = ItemTemplateManager.GetAllWeaponTemplates();
 	
@@ -856,8 +857,8 @@ function UpdateWeaponTemplates_RandomizedDamage()
 	}
 
 	//restore difficulty settings
-	Settings.SetDifficulty(OriginalLowestDifficulty, true);
-	Settings.SetDifficulty(OriginalDifficulty, false);		
+	Settings.SetDifficulty(OriginalLowestDifficulty, -1, -1, -1, false, true);
+	Settings.SetDifficulty(OriginalDifficulty, -1, -1, -1, false, false);		
 }
 
 // ======= RANDOMIZED INITIAL STATS ======= // 
@@ -1087,7 +1088,7 @@ function UpdateOneSoldier_RandomizedInitialStats(XComGameState_Unit Unit, XComGa
 	RandomizedStatsState.ApplyRandomInitialStats(UpdatedUnit, bRandomizedInitialStatsEnabled);
 }
 
-function EventListenerReturn OnMonthEnd(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn OnMonthEnd(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComGameState NewGameState;
 	local string ChangeString;
@@ -1121,7 +1122,7 @@ function EventListenerReturn OnMonthEnd(Object EventData, Object EventSource, XC
 	return ELR_NoInterrupt;
 }
 
-function EventListenerReturn OnSoldierCreatedEvent(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn OnSoldierCreatedEvent(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComGameState_Unit Unit;
 	local XComGameState NewGameState;
@@ -1260,7 +1261,7 @@ function GetRankChangedObjectList(XComGameState NewGameState, out array<XComGame
 
     for( StateObjectIndex = 0; StateObjectIndex < NewGameState.GetNumGameStateObjects(); ++StateObjectIndex )
 	{
-		StateObjectCurrent = NewGameState.GetGameStateForObjectIndex(StateObjectIndex);		
+		StateObjectCurrent = NewGameState.DebugGetGameStateForObjectIndex(StateObjectIndex);		
 		UnitStateCurrent = XComGameState_Unit(StateObjectCurrent);
 		if( UnitStateCurrent != none )
 		{
@@ -1419,7 +1420,7 @@ static function XComGameState_Unit_LWRandomizedStats GetRandomizedStatsComponent
 	return none;
 }
 
-function EventListenerReturn CleanUpComponentStateOnDismiss(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn CleanUpComponentStateOnDismiss(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComGameState_Unit UnitState, UpdatedUnit;
 	local XComGameStateHistory History;
@@ -1641,7 +1642,7 @@ static function GetHPChangedObjectList(XComGameState NewGameState, out array<XCo
 
     for( StateObjectIndex = 0; StateObjectIndex < NewGameState.GetNumGameStateObjects(); ++StateObjectIndex )
 	{
-		StateObjectCurrent = NewGameState.GetGameStateForObjectIndex(StateObjectIndex);		
+		StateObjectCurrent = NewGameState.DebugGetGameStateForObjectIndex(StateObjectIndex);		
 		UnitStateCurrent = XComGameState_Unit(StateObjectCurrent);
 		if( UnitStateCurrent != none )
 		{
@@ -1693,7 +1694,7 @@ function CleanupRedFog()
 
 }
 
-function EventListenerReturn OnPostInitAbilities(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn OnPostInitAbilities(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	local XComGameState NewGameState;
 	local XComGameStateHistory History;
@@ -1707,7 +1708,7 @@ function EventListenerReturn OnPostInitAbilities(Object EventData, Object EventS
 	UnitState = XComGameState_Unit(EventData);
 	if(UnitState != none)
 	{
-		UnitNeedsRedFog = !UnitState.IsASoldier();
+		UnitNeedsRedFog = !UnitState.IsSoldier();
 		if (UnitNeedsRedFog)
 		{
 			ChangeContainer = class'XComGameStateContext_ChangeContainer'.static.CreateEmptyChangeContainer("Applying Red Fog to specific unit");
@@ -1725,7 +1726,7 @@ function EventListenerReturn OnPostInitAbilities(Object EventData, Object EventS
 	return ELR_NoInterrupt;
 }
 
-function EventListenerReturn OnSetRedFogActivation(Object EventData, Object EventSource, XComGameState GameState, Name EventID)
+function EventListenerReturn OnSetRedFogActivation(Object EventData, Object EventSource, XComGameState GameState, Name EventID, Object CallbackData)
 {
 	//SetRedFogAbilityActivation(GameState);
 

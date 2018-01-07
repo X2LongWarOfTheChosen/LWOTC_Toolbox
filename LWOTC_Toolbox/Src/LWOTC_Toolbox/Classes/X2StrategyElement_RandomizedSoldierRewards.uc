@@ -92,7 +92,7 @@ static function GeneratePersonnelReward(XComGameState_Reward RewardState, XComGa
 			{
 				NewUnitState.RankUpSoldier(NewGameState, ResistanceHQ.SelectNextSoldierClass());
 				NewUnitState.ApplySquaddieLoadout(NewGameState);
-				for(i = 0; i < NewUnitState.GetSoldierClassTemplate().GetAbilityTree(0).Length; ++i)
+				for(i = 0; i < NewUnitState.GetSoldierClassTemplate().GetAbilitySlots(0).Length; ++i)
 				{
 					NewUnitState.BuySoldierProgressionAbility(NewGameState, 0, i);
 				}
